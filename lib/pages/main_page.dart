@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learn/pages/home_page.dart';
 import 'package:flutter_learn/pages/profile_page.dart';
 import 'package:flutter_learn/styles/app_colors.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,6 +18,14 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacementNamed('/');
+        },
+        child: SvgPicture.asset('assets/svg/ic_home.svg'),
+      ),
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -41,6 +50,7 @@ class _MainPageState extends State<MainPage> {
             label: 'User',
           ),
         ],
+        elevation: 0.1,
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
